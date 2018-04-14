@@ -1,0 +1,45 @@
+﻿@model StoreMSDemo.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    <title>Login</title>
+    <style>
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            @using (Html.BeginForm("Autherize", "Login"))
+            {
+                <H3 style="text-decoration:underline">Store Management System</H3>
+                @Html.EditorFor(model => model.Username, new { @class = "form-control", @placeholder = "User Name" })
+                @Html.ValidationMessageFor(model => model.Username)
+                @Html.EditorFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+                @Html.ValidationMessageFor(model => model.Password)
+
+                if (TempData["Message"] != null)
+                {
+                    <p class="field-validation-error"> @TempData["Message"].ToString()</p>
+                }
+
+                <button type="submit" name=" name" value="Login">Login</button>
+            }
+
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

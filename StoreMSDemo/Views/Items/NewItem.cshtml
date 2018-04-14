@@ -1,0 +1,36 @@
+﻿@model StoreMSDemo.Models.Item
+@{
+    ViewBag.Title = "Add New Item";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+<h2>New Item</h2>
+
+<div class="container" style="margin-top:2%">
+    @using (Html.BeginForm("SaveItem", "Items", FormMethod.Post))
+    {
+        @Html.TextBoxFor(model => model.ItemCode, new { @class = "form-control", @placeholder = "Item Code" })
+        @Html.ValidationMessageFor(model => model.ItemCode)
+
+        @Html.TextBoxFor(model => model.ItemName, new { @class = "form-control", @placeholder = "Item Name" })
+        @Html.ValidationMessageFor(model => model.ItemName)
+
+        @Html.TextBoxFor(model => model.ItemType, new { @class = "form-control", @placeholder = "Item Type" })
+        @Html.ValidationMessageFor(model => model.ItemType)
+
+        @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control", @type = "number", @placeholder = "Quantity" })
+        @Html.ValidationMessageFor(model => model.Quantity)
+
+        <input type="submit" value="Submit" class="btn btn-block btn-primary" />
+    }
+</div>
+

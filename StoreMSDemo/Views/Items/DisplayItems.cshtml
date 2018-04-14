@@ -1,0 +1,35 @@
+﻿@model IEnumerable<StoreMSDemo.Models.Item>
+@{
+    ViewBag.Title = "Items";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<h2>Items</h2>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Item Code</th>
+            <th>Item Name</th>
+            <th>Item Type</th>
+            <th>Qty</th>
+            <th>Date</th>
+            <th>Print</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ItemCode</td>
+                <td>@item.ItemName</td>
+                <td>@item.ItemType</td>
+                <td>@item.Quantity</td>
+                <td>@item.TDate</td>
+
+                <td><a href="@Url.Action("Print", "Items", new { ItemCode = item.ItemCode })" class="btn btn-danger glyphicon glyphicon-print"></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
